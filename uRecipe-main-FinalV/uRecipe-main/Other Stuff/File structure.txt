@@ -1,0 +1,52 @@
+[This File show the websites file structure]
+
+D:\uRecipe-main\uRecipe\backend
+  ├── controllers\
+	├── ingredientsController.js
+	├── recipeController.js
+	├── tagsController.js
+	├── userController.js
+  ├── images\
+	├── profiles\
+	├── recipes\
+  ├── models\
+	├── db.js
+  ├── node_modules\
+	├── ...
+  ├── routes\
+	├── ingredientsRoutes.js
+	├── recipeRoutes.js
+	├── tagsRoutes.js
+	├── userRoutes.js
+  ├── database.sqlite
+  ├── package.json
+  ├── package-lock.json
+  ├── server.js
+
+
+
+D:\uRecipe-main\uRecipe\front-end
+  ├── pages\
+	├── login\
+		├── login.html
+		├── login.js
+		├── script.js
+		├── signup.html
+	├── create_recipe.html
+	├── create_recipe.js
+	├── edit_recipe.html
+	├── script.js
+	├── search.html
+	├── search.js
+	├── user_profile.html
+	├── user_profilejs
+	├── user_recipes.html
+	├── user_recipes.js
+	├── view_recipe.html
+	├── view_recipe.js
+  ├── index.html
+  ├── landing_page.html
+  ├── landing_page.js
+  ├── script.js
+  ├── styles.css
+

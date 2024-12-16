@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Signup - uRecipe</title>
+        <link rel="stylesheet" href="../../styles.css">
+    </head>
+    <body>
+    <!-- Header Section/Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="container" style="padding: 10px;">
+                <div class="logo"> <a href="../../landing_page.html">uRecipe</a>
+                </div>
+                <div id="user-info" class="user-info" style="margin-right: 15px; font-size: 1.2em; color: #fff;"> </div>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-label="Menu">Menu &#9662;</button>
+                    <div class="dropdown-content">
+                        <a href="../search.html" aria-label="View Recipes" style="text-align: center;">
+                            Recipes
+                        </a>
+                        <div id="notLoggedInLinks">
+                            <!-- Only if not logged in -->
+                            <a href="login.html" aria-label="Login Page" style="text-align: center;">
+                                Login
+                            </a>
+                        </div>
+                        <div id="loggedInLinks" style="display: none;">
+                            <!-- Only if logged in -->
+                            <a href="../user_profile.html" aria-label="User Profile" style="text-align: center;">
+                                My Account
+                            </a>
+                            <a href="../user_recipes.html" aria-label="User Recipes" style="text-align: center;">
+                                My Recipes
+                            </a>
+                            <a href="../create_recipe.html" aria-label="Create Recipe" style="text-align: center;">
+                                Add Recipe
+                            </a>
+                            <a href="#" id="logoutLink" aria-label="Log out" style="text-align: center;">
+                                Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+        <section class="login-section">
+            <div class="container">
+                <h1 style="color: #e9cfad; font-size: 30px;">Create a uRecipe Account</h1>
+                <form id="signupForm" method="post">
+                    <input type="text" id="displayName" name="displayName" placeholder="Full Name" required>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                    <button type="submit" id="signupButton" style="margin-top: 6px;">Sign Up</button>
+                </form>
+                <div style="margin: 12px;">
+                    <p class="login-link" style="color: #e9cfad; font-size: 17px;"> Already have an account? </p>
+                    <button onclick="location.href='login.html'">Log in here</button>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2024 uRecipe - All Rights Reserved</p>
+            </div>
+        </footer>
+        <script>
+            document.getElementById('signupForm').addEventListener('submit', async (event) => {
+                event.preventDefault(); // Prevent the form's default behavior
+            
+                const displayName = document.getElementById('displayName').value;
+                const username = document.getElementById('username').value;
+                const email = document.getElementById('email').value;
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+            
+                if (password !== confirmPassword) {
+                    alert('Passwords do not match!');
+                    return;
+                }
+            
+                try {
+                    const response = await fetch('http://localhost:3000/api/users/register', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({ displayName, username, email, password }),
+                    });
+            
+                    const data = await response.json();
+                    if (response.ok) {
+                        alert('Signup successful! Redirecting to login page...');
+                        window.location.href = 'login.html'; // Redirect to login page
+                    } else {
+                        console.error('Registration failed:', data);
+                        alert(data.message);
+                    }
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                    alert('An error occurred during signup. Please try again.');
+                }
+            });
+        </script>
+        <script src="script.js"></script> 
+    </body>
+</html>

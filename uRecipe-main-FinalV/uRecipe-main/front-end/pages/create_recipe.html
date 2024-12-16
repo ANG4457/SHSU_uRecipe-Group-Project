@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Recipe - uRecipe</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+
+<body>
+    <!-- Header Section/Navigation Bar -->
+    <header>
+        <nav class="navbar">
+            <div class="container" style="padding: 10px;">
+                <div class="logo"> <a href="../landing_page.html">uRecipe</a>
+                </div>
+                <div id="user-info" class="user-info" style="margin-right: 15px; font-size: 1.2em; color: #fff;"> </div>
+                <div class="dropdown">
+                    <button class="dropbtn" aria-label="Menu">Menu &#9662;</button>
+                    <div class="dropdown-content"> <a href="search.html" aria-label="View Recipes"
+                            style="text-align: center;">
+                            Recipes
+                        </a>
+                        <div id="notLoggedInLinks">
+                            <!-- Only if not logged in -->
+                            <a href="login/login.html" aria-label="Login Page" style="text-align: center;">
+                                Login
+                            </a>
+                        </div>
+                        <div id="loggedInLinks" style="display: none;">
+                            <!-- Only if logged in -->
+                            <a href="user_profile.html" aria-label="User Profile" style="text-align: center;">
+                                My Account
+                            </a> <a href="user_recipes.html" aria-label="User Recipes" style="text-align: center;">
+                                My Recipes
+                            </a> <a href="create_recipe.html" aria-label="Create Recipe" style="text-align: center;">
+                                Add Recipe
+                            </a> <a href="#" id="logoutLink" aria-label="Log out" style="text-align: center;">
+                                Log out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- Create Recipe Section -->
+    <section class="create-recipe-section">
+        <div class="container">
+            <h1 class="bounding-box" style="font-size: 30px;">Create a New Recipe</h1>
+            <form id="createRecipeForm">
+                <div class="bounding-box">
+                    <input type="text" id="recipeTitle" placeholder="Recipe Title" required style="font-size: 20px;">
+                </div>
+                <div class="bounding-box">
+                    <textarea id="recipeDescription" placeholder="Recipe Description" required
+                        style="font-size: 20px; width: 95%; padding-bottom: 0px; margin-top: 7px; min-height: 100px; min-width: 95%; max-width: 95%;"></textarea>
+                </div>
+                <div class="bounding-box">
+                    <textarea id="recipeInstructions" placeholder="Recipe Instructions" required
+                        style="font-size: 20px; min-height: 200px; width: 95%; min-width: 95%; max-width: 95%;"></textarea>
+                </div>
+                <div class="bounding-box">
+                    <input type="number" id="preparationTime" placeholder="Preparation Time (minutes)" required
+                        style="font-size: 20px;">
+                </div>
+                <div class="bounding-box">
+                    <input type="file" id="recipeImage" accept="image/*" style="font-size: 20px;">
+                </div>
+                <!-- Selected Ingredients Section -->
+                <div class="bounding-box selected-ingredients-section">
+                    <h2>Selected Ingredients</h2>
+                    <div id="selectedIngredientsContainer">
+                        <!-- Selected ingredients with quantity input fields will be injected here -->
+                    </div>
+                </div>
+                <!-- Ingredients Section -->
+                <div class="bounding-box ingredients-section">
+                    <h2>Select Ingredients</h2>
+                    <input type="text" id="ingredientSearchInput" placeholder="Search for ingredients..."
+                        oninput="filterIngredients()">
+                    <div id="ingredientsContainer" class="scrollable-container">
+                        <!-- Ingredients checkboxes will be injected here -->
+                    </div>
+                    <button type="button" id="addNewIngredientButton" style="margin-top: 10px;">Add New
+                        Ingredient
+                    </button>
+                </div>
+                <!-- Tags Section -->
+                <div class="bounding-box tags-section">
+                    <h2>Select Tags</h2>
+                    <input type="text" id="tagSearchInput" placeholder="Search for tags..." oninput="filterTags()">
+                    <div id="tagsContainer" class="scrollable-container">
+                        <!-- Tags checkboxes will be injected here -->
+                    </div>
+                    <button type="button" id="addNewTagButton" style="margin-top: 10px;">Add New Tag</button>
+                </div>
+                <div class="bounding-box">
+                    <label for="isHidden" style="font-size: 20px;">
+                        <input type="checkbox" id="isHidden"> Mark as Hidden
+                    </label>
+                </div>
+                <div class="bounding-box" style="margin-right: 250px; margin-left: 250px;">
+                    <button type="submit" style="font-size: 25px; margin: 15px;">Create Recipe</button>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 uRecipe - All Rights Reserved</p>
+        </div>
+    </footer>
+    <script src="create_recipe.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
